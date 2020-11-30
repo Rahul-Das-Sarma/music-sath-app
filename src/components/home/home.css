@@ -1,0 +1,33 @@
+.music-playlist-group{
+    margin: 10px 14px;
+    width: 150px;
+    height: 160px;
+
+}
+.music-playlist-items{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.music-playlist-card{
+    width: 180px;
+    height: 270px;  
+    margin: 20px;  
+    background-color: rgb(39, 38, 38);
+    color: rgb(179, 174, 174); 
+    border-radius: 2px; 
+}
+.music-playlist-description{
+    margin: 0;
+    padding: 2px 20px 20px;
+    /* color: rgb(179, 174, 174); */
+    word-wrap: break-word;
+    cursor: default;
+}
+.music-playlist-card:hover
+{
+background-color: rgb(58, 57, 57);
+color: #ffffff;
+}
+

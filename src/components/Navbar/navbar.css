@@ -1,0 +1,86 @@
+nav{
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.top-right-nav{
+    margin-left: 20px;
+}
+.music-logo{
+    font-family: 'Architects Daughter', cursive;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.more-options{
+    list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.top-mid-nav{
+      margin-top: 10px;
+}
+.top-mid-nav ul{
+    list-style: none;
+  
+}
+.top-mid-nav ul li {
+    display: inline;
+    margin: 10px;
+    
+   }
+.search-input{
+    border-radius: 5px;
+    text-align: center;
+    outline: none;
+    width:280px;
+    padding: 7px 3px;
+    z-index: 200;
+    background-color: rgb(41, 39, 39);
+    color: #fff;
+    border: none;
+}
+.li-overlapping{
+    text-decoration: none;
+    color: #fff;
+}
+
+@media only screen  and (max-width: 640px) {
+ .music-logo,.li-overlapping, .search-text{
+     position: absolute;
+ }
+ .home{
+    top:17px;
+ }
+ .explore{
+     top:17px;
+     right: 43px;
+ }
+ .search-text{
+     right: 10px;
+ }
+ .top-mid-nav ul {
+    padding-left: 0
+  }
+
+.search-input
+{
+display: none;
+}
+.search-input-show{
+    display: block;
+    position: absolute;
+    top: 20px;
+    width:87%;
+    left: 5px;
+    z-index: 200;
+    animation: fadein .2s ease-in both;
+}
+@keyframes fadein {
+    from{opacity: 0}
+    to{opacity: 1;}
+}
+
+}

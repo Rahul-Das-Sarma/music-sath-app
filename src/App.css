@@ -1,0 +1,27 @@
+
+body{
+    background-image:  linear-gradient(to right, rgb(31, 30, 30), rgb(26, 24, 24) ); 
+ color: white;
+ font-family: 'Lato', sans-serif;
+}
+.App {
+ margin: 0;
+ padding: 0;
+
+ 
+}
+
+.btn-primary{
+    border: none;
+    background-color: #1DB954;
+    padding: 20px 40px;
+    border-radius: 40px;
+    outline: none;
+
+}
+
+.btn-primary:hover{
+    background-color: #1ecf5c ;
+    color: #fff;
+    transition: .2s ease-out;
+}
