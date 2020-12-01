@@ -4,7 +4,6 @@ const initialState = {
     
     user: null,
     playlist: [],
-    // musicAvailableList: [],
     token : null,
     playing : false
 }
@@ -58,6 +57,16 @@ switch(action.type){
         return {
             ...state,
             workOutPlaylist: action.payload
+        }
+    case actionTypes.SELECTED_PLAYLIST_ID:
+        return {
+          ...state,
+        selectedPlaylistId: action.payload
+        }
+    case actionTypes.SELECTED_PLAYLIST_PAGE:
+        return {
+            ...state,
+            selectedPlaylistDetails: action.payload
         }
     default:
         return state

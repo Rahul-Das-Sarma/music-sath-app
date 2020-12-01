@@ -15,18 +15,21 @@ const Navbar  = () => {
     }
     return(
         <nav>
+       <div className="nav-container">
         <div className="top-right-nav">
          <h1 className="music-logo">MusicSath</h1>
                  </div>
          <div className="top-mid-nav">
          <ul>
-    <Link to='/'><li className="li-overlapping home" >Home</li></Link> 
+    <Link style={{textDecoration:"none"}} to='/'><li className="li-overlapping home" >Home</li></Link> 
      
              <li > <input id="search-bar" className="search-input" type="text" placeholder="search for songs..."></input><span className="search-text" style={{marginLeft: "10px", cursor: "pointer"}}><SearchIcon onClick={ShowSearchInput} style={{verticalAlign:"middle"}} /></span>   </li>
          </ul>            
         </div>
           <div className="top-left-nav" style={{marginRight:"20px"}}>
  
+          </div>
+
           </div>
     </nav>
     )

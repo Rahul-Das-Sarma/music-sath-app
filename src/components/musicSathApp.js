@@ -9,13 +9,18 @@ import {connect} from 'react-redux';
 import recievedToken from '../store/actions/tokenActions';
 import { NewHindiPlaylist, BestofArmaanMalikPlaylist, BollywoodAlbums, NewHindiSongs } from '../store/actions/newHindiPlaylist';
 import {LoFiBeatsPlaylist, MellowBeatsPlaylist, BeatsForCodingPlaylist, WorkoutPlaylist} from '../store/actions/beatsPlaylists' 
+import Navbar from './Navbar/navbar';
+import Footer from  './footer/footer';
+import PlaylistDetailPage from './PlaylistDetailpage/PlaylistDetailPage'; 
+import { SelectedPlaylistDetails } from '../store/actions/selectedplaylistpageActions';
+
 
 const MusicSathApp = (props) => {
 
 
 const [token, setToken] = useState("")
 const Spotify = new SpotifyWebApi();
-const propsToken = props.tokenDispatch;
+ 
     useEffect(() => {
         const hash = getAccessToken();
         const _token = hash.access_token
@@ -23,7 +28,7 @@ const propsToken = props.tokenDispatch;
         
 if(_token) {
     setToken(_token)
-    window.location.hash = ""
+   window.location.hash =""
     
     Spotify.setAccessToken(_token)
 
@@ -58,7 +63,7 @@ if(_token) {
 
    
     Spotify.getPlaylist('1qvW13XhfMMZMlzQx362HR').then(data => {
-        console.log(data);
+      
         props.BeatsforCodingPlaylist(data)
     }).catch(err => console.log(err))
 
@@ -67,11 +72,16 @@ if(_token) {
        
         props.WorkoutBeatsPlaylist(data)
     }).catch(err => console.log(err))
-
+    
+    Spotify.getPlaylist(props.onreceivedSelectedID).then(data => {
+        console.log(data);
+        props.SelectedPlaylist(data)
+    })
 
 }
-propsToken(_token)
- },[])
+
+props.tokenDispatch(_token)
+ },[props.tokenDispatch,props.onreceivedSelectedID])
 
     
     return (
@@ -80,15 +90,22 @@ propsToken(_token)
              <Route path='/' component= {Login} /> 
             :
             <>
+            <Navbar />
             <Route path='/music-player' exact props={Spotify} component= {MusicPlayer} />
             <Route path='/' exact component= {Home} />
-       
+            <Route path={`/playlist/:playlistId`} component = {PlaylistDetailPage} />
+            <Footer />
              </>
              }
        
          
        </div>
     )
+}
+const mapStateToProps = (state) => {
+    return {
+        onreceivedSelectedID: state.musicReducer.selectedPlaylistId
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -101,8 +118,9 @@ const mapDispatchToProps = (dispatch) => {
         lofiBeatsPlaylist: (data) => dispatch(LoFiBeatsPlaylist(data)),
         MellowBeatsPlaylist: (data) => dispatch(MellowBeatsPlaylist(data)),
         BeatsforCodingPlaylist: (data) => dispatch(BeatsForCodingPlaylist(data)),
-        WorkoutBeatsPlaylist: (data) => dispatch(WorkoutPlaylist (data))
+        WorkoutBeatsPlaylist: (data) => dispatch(WorkoutPlaylist (data)),
+        SelectedPlaylist: (data) => dispatch(SelectedPlaylistDetails(data))
     }
 }
 
-export default connect(null, mapDispatchToProps)(MusicSathApp); 
+export default connect(mapStateToProps, mapDispatchToProps)(MusicSathApp); 
